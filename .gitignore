@@ -1,0 +1,12 @@
+# Virtual environment
+backend/.venv/
+
+# Byte-compiled / cache
+*.pyc
+__pycache__/
+
+# Django database
+*.sqlite3
+
+# Logs
+*.log
