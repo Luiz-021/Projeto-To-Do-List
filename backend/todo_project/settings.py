@@ -33,13 +33,23 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # apps nativos do Django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # apps de terceiros
+    'rest_framework',                         # Django REST Framework
+    'rest_framework_simplejwt.token_blacklist',  # se usar blacklist de JWT
+
+    # Meus apps
+    'todo_project.apps.user',     # app de Usuário (criado na branch entidade-user)
+    'todo_project.apps.ToDoList', # app de ToDo (seu scaffold inicial)
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
