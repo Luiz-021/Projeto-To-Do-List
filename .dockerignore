@@ -1,0 +1,16 @@
+# Ignorar virtualenvs
+backend/.venv
+backend/env
+
+# Ignorar caches e artefatos
+backend/**/*.pyc
+backend/**/__pycache__
+backend/**/.DS_Store
+
+# Ignorar arquivos do IDE / SO
+.vscode
+.idea
+*.log
+
+# Ignorar dados de banco local
+db_data

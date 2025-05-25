@@ -6,7 +6,8 @@ WORKDIR /app
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       default-libmysqlclient-dev \
-      build-essential && \
+      build-essential \
+      default-mysql-client && \
     rm -rf /var/lib/apt/lists/*
 
 # Copia e instala as dependências Python

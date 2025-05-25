@@ -12,25 +12,26 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# BASE_DIR aponta para projeto_ToDoList/backend/todo_project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# 1) Instancie o Env com valores padrão
+env = environ.Env(
+    DEBUG=(bool, False),
+)
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+# 2) A leitura deve apontar para o .env na raiz (duas pastas acima de __file__)
+#    ou seja: projeto_ToDoList/.env
+environ.Env.read_env(os.path.join(BASE_DIR.parent, '.env'))
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-l7t%h77v7r(b41j8lav2ymbfkw4+z3op+iybf5ym!#p!_#x@g0'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Agora leia as chaves
+SECRET_KEY = env('DJANGO_SECRET_KEY')
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
-
-
-# Application definition
 
 INSTALLED_APPS = [
     # apps nativos do Django
@@ -42,14 +43,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # apps de terceiros
-    'rest_framework',                         # Django REST Framework
-    'rest_framework_simplejwt.token_blacklist',  # se usar blacklist de JWT
+    'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
 
     # Meus apps
-    'todo_project.apps.user',     # app de Usuário (criado na branch entidade-user)
-    'todo_project.apps.ToDoList', # app de ToDo (seu scaffold inicial)
+    'todo_project.apps.user',
+    'todo_project.apps.ToDoList',
 ]
 
+AUTH_USER_MODEL = 'user.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -81,20 +83,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'todo_project.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
+# DATABASES usando django-environ
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('MYSQL_DATABASE'),
-        'USER': os.getenv('MYSQL_USER'),
-        'PASSWORD': os.getenv('MYSQL_PASSWORD'),
-        'HOST': 'db',
-        'PORT': '3306',
+        'ENGINE':   'django.db.backends.mysql',
+        'NAME':     env('MYSQL_DATABASE'),
+        'USER':     env('MYSQL_USER'),
+        'PASSWORD': env('MYSQL_PASSWORD'),
+        'HOST':     'db',
+        'PORT':     '3306',
     }
 }
+
 
 
 
