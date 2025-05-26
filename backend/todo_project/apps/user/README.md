@@ -72,7 +72,19 @@ Este guia explica como utilizar os endpoints relacionados à entidade **User** d
 
 ---
 
-### 6. Renovar Token
+### 6. Deletar Usuário
+
+- **Endpoint:** `DELETE /api/users/<id>/`
+- **Descrição:** Remove o usuário com o id informado.
+- **Autenticação:**  
+  - Necessário enviar o token JWT no header.
+- **Regras de permissão:**
+  - **Usuário comum:** pode deletar apenas a si mesmo (se tentar deletar outro usuário, recebe erro 404 ou 403).
+  - **Superusuário:** pode deletar qualquer usuário, inclusive a si mesmo.
+
+---
+
+### 7. Renovar Token
 
 - **Endpoint:** `POST /api/token/refresh/`
 - **Descrição:** Retorna um novo token de acesso usando o token de refresh.
@@ -111,6 +123,17 @@ const res = await fetch('/api/users/', {
 const users = await res.json();
 ```
 
+### Deletar usuário autenticado
+
+```js
+const access = localStorage.getItem('access');
+const userId = 2; // id do usuário a ser deletado
+await fetch(`/api/users/${userId}/`, {
+  method: 'DELETE',
+  headers: { 'Authorization': `Bearer ${access}` }
+});
+```
+
 ### Renovar token
 
 ```js
@@ -135,6 +158,7 @@ localStorage.setItem('access', data.access);
 | GET    | /api/users/             | Lista usuários             | Sim (Bearer Token)       |
 | GET    | /api/users/<id>/        | Detalha usuário            | Sim (Bearer Token)       |
 | PUT    | /api/users/<id>/        | Atualiza usuário           | Sim (Bearer Token)       |
+| DELETE | /api/users/<id>/        | Deleta usuário             | Sim (Bearer Token)       |
 | POST   | /api/token/refresh/     | Renova token JWT           | Não (usa refresh token)  |
 
 ---
@@ -142,3 +166,9 @@ localStorage.setItem('access', data.access);
 **Dica:** Sempre envie o token de acesso no header `Authorization` para rotas protegidas.
 
 ---
+
+## Observação sobre deleção
+
+- Usuários comuns podem deletar apenas a si mesmos.
+- Superusuários podem deletar qualquer usuário, inclusive a si mesmos.
+- Isso está de acordo com a lógica do seu `UserViewSet` e as permissões implementadas.
