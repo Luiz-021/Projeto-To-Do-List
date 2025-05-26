@@ -2,26 +2,29 @@ version: '3.8'
 services:
   db:
     image: mysql:8.0
-    restart: always
-    env_file:
-      - .env
+    command: [
+        "--host_cache_size=0",          # Substitui --skip-host-cache
+        "--default-authentication-plugin=mysql_native_password",
+        "--character-set-server=utf8mb4",
+        "--collation-server=utf8mb4_unicode_ci"
+    ]
     environment:
-      # serão preenchidas de .env
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE:      ${MYSQL_DATABASE}
-      MYSQL_USER:          ${MYSQL_USER}
-      MYSQL_PASSWORD:      ${MYSQL_PASSWORD}
-    volumes:
-      - db_data:/var/lib/mysql
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
+      test: [
+          "CMD-SHELL",
+          "mysqladmin ping -uroot -p$$MYSQL_ROOT_PASSWORD --protocol=tcp"
+      ]
+      interval: 5s
       timeout: 5s
-      retries: 5
+      retries: 10
 
   web:
     build:
-      context: ./backend
+      context: .
     command: >
       sh -c "
         until mysqladmin ping -hdb --silent; do
@@ -34,7 +37,7 @@ services:
         gunicorn todo_project.wsgi:application --bind 0.0.0.0:8000
       "
     volumes:
-      - ./backend/:/app
+      - ./:/app
     ports:
       - "8000:8000"
     env_file:
