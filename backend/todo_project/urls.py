@@ -26,4 +26,5 @@ urlpatterns = [
     path('api/', include('todo_project.apps.user.urls')),  # ou o caminho correto do seu app
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+     path('api/', include('todo_project.apps.ToDoList.urls')),
 ]
