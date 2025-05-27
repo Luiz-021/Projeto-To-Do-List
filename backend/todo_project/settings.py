@@ -91,15 +91,12 @@ environ.Env.read_env(os.path.join(BASE_DIR.parent, '.env'))
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'todo_db',
         'USER': 'todo_user',
         'PASSWORD': 'todo_password',
         'HOST': 'db',
-        'PORT': '3306',
-        'OPTIONS': {
-            'charset': 'utf8mb4',
-        },
+        'PORT': '5432',
     }
 }
 
