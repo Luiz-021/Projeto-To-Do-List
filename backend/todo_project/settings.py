@@ -89,7 +89,7 @@ DATABASES = {
 env = environ.Env(
     DEBUG=(bool, False),
 )
-# lê o .env na raiz (projeto_ToDoList/.env)
+
 environ.Env.read_env(os.path.join(BASE_DIR.parent, '.env'))
 
 DATABASES = {
