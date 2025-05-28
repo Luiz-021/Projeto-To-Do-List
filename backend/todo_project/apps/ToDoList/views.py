@@ -4,7 +4,7 @@ from .models import Task
 from .serializers import TaskSerializer
 
 
-class TaskListCreateView(generics.ListCreateAPIView):
+class TaskListView(generics.ListAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
@@ -15,6 +15,8 @@ class TaskListCreateView(generics.ListCreateAPIView):
 class TaskRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
+    def get_queryset(self):
+        return Task.objects.filter(user=self.request.user)
 
 
 class TaskUserView(generics.ListAPIView):
