@@ -13,6 +13,6 @@ class UserViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user = self.request.user
-        if self.action in ['list','retrieve'] and not user.is_superuser:
+        if self.action in ['list', 'retrieve', 'destroy', 'update', 'partial_update'] and not user.is_superuser:
             return User.objects.filter(pk=user.pk)
         return super().get_queryset()
