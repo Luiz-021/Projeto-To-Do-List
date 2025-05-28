@@ -98,57 +98,6 @@ Este guia explica como utilizar os endpoints relacionados à entidade **User** d
 
 ---
 
-## Exemplos de Uso no Front-end (JS/Next.js)
-
-### Login e salvar token
-
-```js
-const res = await fetch('/api/token/', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ username, password })
-});
-const data = await res.json();
-localStorage.setItem('access', data.access);
-localStorage.setItem('refresh', data.refresh);
-```
-
-### Requisição autenticada
-
-```js
-const access = localStorage.getItem('access');
-const res = await fetch('/api/users/', {
-  headers: { 'Authorization': `Bearer ${access}` }
-});
-const users = await res.json();
-```
-
-### Deletar usuário autenticado
-
-```js
-const access = localStorage.getItem('access');
-const userId = 2; // id do usuário a ser deletado
-await fetch(`/api/users/${userId}/`, {
-  method: 'DELETE',
-  headers: { 'Authorization': `Bearer ${access}` }
-});
-```
-
-### Renovar token
-
-```js
-const refresh = localStorage.getItem('refresh');
-const res = await fetch('/api/token/refresh/', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ refresh })
-});
-const data = await res.json();
-localStorage.setItem('access', data.access);
-```
-
----
-
 ## Resumo dos Endpoints
 
 | Método | Endpoint                | Descrição                  | Autenticação             |
@@ -171,4 +120,3 @@ localStorage.setItem('access', data.access);
 
 - Usuários comuns podem deletar apenas a si mesmos.
 - Superusuários podem deletar qualquer usuário, inclusive a si mesmos.
-- Isso está de acordo com a lógica do seu `UserViewSet` e as permissões implementadas.
