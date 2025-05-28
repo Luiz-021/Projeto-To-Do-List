@@ -1,0 +1,81 @@
+.edit-container {
+    background-color: #dddafe;
+    height: 110vh;
+}
+
+.edit-header {
+    background-color: #7dbbf3;
+    padding: 10px 30px;
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.edit-box {
+    max-width: 420px;
+    margin: 40px auto;
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+}
+
+.edit-title {
+    background-color: #7dbbf3;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin: -30px -30px 20px -30px;
+    padding: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.edit-form label {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 16px;
+}
+
+.edit-form input,
+.edit-form textarea {
+    margin-top: 5px;
+    border: 2px solid black;
+    border-radius: 12px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.save-button {
+    background-color: #7dbbf3;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.save-button:hover {
+    background-color: #60a5e6;
+}
+
+.back-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.back-link a {
+    color: black;
+    text-decoration: underline;
+}
