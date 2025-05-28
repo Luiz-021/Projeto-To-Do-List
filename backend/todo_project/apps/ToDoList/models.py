@@ -14,6 +14,7 @@ class Task(Base):
     title = models.CharField(max_length=100, blank=True, null=True)
     description = models.TextField()
     completed = models.BooleanField(default=False)
+    date_limited = models.DateField(blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='todos')
 
     def __str__(self):
