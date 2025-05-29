@@ -46,6 +46,12 @@ export default function TodoListView() {
         fetchTarefas();
     }, []); 
 
+    const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    navigate("/");
+};
+
     const handleExcluir = async (tarefaId) => {
         const accessToken = localStorage.getItem("accessToken");
         if (!accessToken) {
@@ -95,6 +101,20 @@ export default function TodoListView() {
                     onChange={(e) => setSearch(e.target.value)}
                     className="search-bar"
                 />
+
+                <button
+                    tittle="Sair"
+                    onClick={handleLogout}
+                    style={{
+                background: "none",
+                border: "none",
+                fontSize: "1.4rem",
+                cursor: "pointer",
+                color: "#555"
+               }}
+            >⎋</button>
+
+
             </div>
 
             {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
