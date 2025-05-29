@@ -1,19 +1,41 @@
+# Projeto TODO-List - PS Ceos
+
+O projeto consiste em uma aplicação web to-do list containeirizada para um usuário realizar login e criar suas atividades e afazeres, colocando deadline, descrição, e podendo fazer alteração ou exclusão da mesma. O projeto faz uma integração com o backend e utiliza um banco de dados.
+
+## 👨‍💻 Integrantes
+
+- **Equipe 6**
+
+---
+
+## Tecnologias utilizadas:
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
+
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+
+
+---
 ## Backend - Django REST API
 
 ### Descrição
 
-O backend deste projeto foi desenvolvido em **Django** e **Django REST Framework**, fornecendo uma API para autenticação de usuários, gerenciamento de tarefas (ToDoList) e integração com o frontend.
+O backend deste projeto foi desenvolvido em [**Django**](https://docs.djangoproject.com/en/5.2/) e [**Django REST Framework**](https://www.django-rest-framework.org/), fornecendo uma API para autenticação de usuários, gerenciamento de tarefas (ToDoList) e integração com o frontend.
 
 ---
 
 ### Principais responsabilidades do backend
 
-- Autenticação e autorização de usuários (JWT)
+- Autenticação e autorização de usuários ([JWT](https://jwt.io/))
 - CRUD de usuários (cadastro, login, atualização, deleção)
 - CRUD de tarefas (criação, listagem, atualização, deleção)
 - Associação de tarefas ao usuário autenticado
 - Validação de permissões (usuário comum só pode acessar/deletar suas próprias tarefas)
-- Integração com banco de dados PostgreSQL
+- Integração com banco de dados [PostgreSQL](https://www.postgresql.org/docs/)
 - Documentação dos endpoints via README e/ou Swagger/OpenAPI
 
 ---
@@ -22,8 +44,8 @@ O backend deste projeto foi desenvolvido em **Django** e **Django REST Framework
 
 #### Pré-requisitos
 
-- Docker e Docker Compose instalados
-- (Opcional) Python 3.10+ e pip para rodar localmente sem Docker
+- [Docker](https://www.docker.com/) e Docker Compose instalados
+- (Opcional) [Python 3.10+](https://www.python.org/) e pip para rodar localmente sem Docker
 
 #### Configuração do ambiente
 
@@ -54,13 +76,13 @@ docker-compose up --build
 ---
 ### O que é o XSStrike?
 
-XSStrike é uma suíte avançada de detecção de XSS. Ele não apenas verifica parâmetros refletidos, mas também analisa o contexto da injeção, realiza fuzzing com múltiplos payloads, tenta identificar e contornar Web Application Firewalls (WAFs) e filtros de sanitização.
+[XSStrike](https://github.com/s0md3v/XSStrike) é uma suíte avançada de detecção de XSS. Ele não apenas verifica parâmetros refletidos, mas também analisa o contexto da injeção, realiza fuzzing com múltiplos payloads, tenta identificar e contornar Web Application Firewalls (WAFs) e filtros de sanitização.
 
 ---
 
 ## Pré-requisitos
 
-1.  **Python 3.x** instalado na sua máquina.
+1.  **Python 3.10+** instalado na sua máquina.
 2.  **Git** instalado para clonar o repositório do XSStrike.
 
 ---
@@ -150,3 +172,41 @@ O XSStrike fornecerá feedback sobre os payloads que ele tenta. Você mencionou 
     * Pode indicar que alguma proteção está em vigor, mas não garante que a proteção seja infalível contra todos os vetores.
 
 ---
+
+# Frontend - JavaScript com React
+### Descrição
+O frontend do projeto foi desenvolvido utilizando a tecnologia [**JavaScript**](https://developer.mozilla.org/en-US/docs/Web/JavaScript), com o comum de web ([HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML) e [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)), mais a biblioteca [**React.js**](react.dev) para fazer todo o UI do projeto.
+
+### Principais funcionalidades do frontend
+- Compor as telas para o usuário interagir e acessar;
+- Formatar o UI para seguir o protótipo (mockup);
+- Possibilitar uma UX agradável para o usuário;
+
+### Como rodar o frontend
+#### Pré-requisitos
+
+- [Docker](https://www.docker.com/) e Docker Compose instalados
+- [React](https://react.dev/learn/installation) 
+
+#### Configuração do ambiente
+
+- Ajuste as variáveis conforme necessário. O arquivo `package.json` contem configurações para os arquivos `.jsx`.
+
+#### Subindo o frontend com Docker
+
+
+```sh
+docker-compose up --build
+```
+---
+#### E para rodar o frontend manualmente?
+```sh
+npm install
+```
+```sh
+npm start
+```
+---
+### Acessando o frontend
+---
+Basta abrir o navegador após startar o projeto acessar `http://localhost:3000`.
