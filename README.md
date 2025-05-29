@@ -175,7 +175,7 @@ O XSStrike fornecerá feedback sobre os payloads que ele tenta. Você mencionou 
 
 # Frontend - JavaScript com React
 ### Descrição
-O frontend do projeto foi desenvolvido utilizando a tecnologia [**JavaScript**](https://developer.mozilla.org/en-US/docs/Web/JavaScript), com o comum de web ([HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML) e [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)), mais a biblioteca [**React.js**]([react.dev](https://react-dev.translate.goog/?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc&_x_tr_hist=true)) para fazer todo o UI do projeto.
+O frontend do projeto foi desenvolvido utilizando a tecnologia [**JavaScript**](https://developer.mozilla.org/en-US/docs/Web/JavaScript), com o comum de web ([HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML) e [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)), mais a biblioteca [**React.js**](https://react-dev.translate.goog/?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc&_x_tr_hist=true) para fazer todo o UI do projeto.
 
 ### Principais funcionalidades do frontend
 - Compor as telas para o usuário interagir e acessar;
