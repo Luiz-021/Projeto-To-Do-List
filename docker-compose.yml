@@ -27,6 +27,17 @@ services:
     depends_on:
       - db
     restart: always
+  
+  frontend:
+    build: 
+      context: ./frontend
+    volumes:
+      - ./frontend:/app
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - web
 
 volumes:
   db_data:
